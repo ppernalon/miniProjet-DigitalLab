@@ -1,0 +1,178 @@
+,university_name,country,score,prediction
+1803,California Institute of Technology,United States of America,95.2,94.79399999999998
+1804,University of Oxford,United Kingdom,94.2,92.15199999999997
+1805,Stanford University,United States of America,93.9,93.1069999999999
+1806,University of Cambridge,United Kingdom,92.8,92.16199999999995
+1807,Massachusetts Institute of Technology,United States of America,92.0,91.5179999999999
+1809,Princeton University,United States of America,90.1,90.14199999999995
+1810,Imperial College London,United Kingdom,89.1,88.37799999999999
+1811,ETH Zurich – Swiss Federal Institute of Technology Zurich,Switzerland,88.3,84.684
+1812,University of Chicago,United States of America,87.9,87.89900000000002
+1813,Johns Hopkins University,United States of America,87.6,85.097
+1814,Yale University,United States of America,87.4,86.55899999999998
+1815,"University of California, Berkeley",United States of America,87.2,85.43900000000004
+1816,University College London,United Kingdom,87.1,84.38700000000004
+1818,"University of California, Los Angeles",United States of America,85.8,85.07999999999998
+1819,University of Pennsylvania,United States of America,85.2,84.60799999999999
+1820,Cornell University,United States of America,84.0,82.99599999999992
+1822,Duke University,United States of America,82.7,80.37499999999994
+1823,University of Michigan,United States of America,82.4,81.80899999999991
+1824,Carnegie Mellon University,United States of America,82.3,81.80399999999997
+1826,University of Edinburgh,United Kingdom,80.3,77.72399999999996
+1827,Northwestern University,United States of America,79.5,78.17499999999994
+1828,National University of Singapore,Singapore,79.2,77.53499999999997
+1829,King’s College London,United Kingdom,78.2,75.93600000000004
+1830,Karolinska Institute,Sweden,77.5,77.42199999999995
+1831,LMU Munich,Germany,77.3,75.47399999999999
+1832,New York University,United States of America,77.2,77.36499999999998
+1833,École Polytechnique Fédérale de Lausanne,Switzerland,76.1,71.47100000000002
+1834,University of Washington,United States of America,75.6,73.41799999999992
+1835,University of Melbourne,Australia,75.4,73.58600000000003
+1836,University of British Columbia,Canada,75.3,74.74800000000006
+1837,KU Leuven,Belgium,74.8,74.227
+1838,University of Illinois at Urbana-Champaign,United States of America,74.5,76.80599999999995
+1839,Heidelberg University,Germany,74.4,72.53099999999999
+1840,McGill University,Canada,72.6,72.72499999999997
+1841,"University of California, San Diego",United States of America,72.2,71.30199999999999
+1842,"University of California, Santa Barbara",United States of America,72.2,69.25699999999998
+1843,Georgia Institute of Technology,United States of America,72.1,72.67700000000005
+1846,"University of California, Davis",United States of America,71.0,72.89999999999999
+1847,University of Hong Kong,Hong Kong,71.0,71.00599999999997
+1848,University of Texas at Austin,United States of America,70.3,71.80199999999998
+1849,Tsinghua University,China,70.0,74.89700000000002
+1850,Wageningen University and Research Center,Netherlands,70.0,67.445
+1852,University of Wisconsin-Madison,United States of America,69.7,71.177
+1854,Australian National University,Australia,69.5,70.61299999999997
+1855,Technical University of Munich,Germany,69.4,65.41399999999993
+1856,École Normale Supérieure,France,69.0,63.78300000000001
+1857,Nanyang Technological University,Singapore,68.2,63.79199999999996
+1858,University of Manchester,United Kingdom,68.1,65.90299999999998
+1859,University of Sydney,Australia,68.1,67.14000000000001
+1860,University of Amsterdam,Netherlands,67.8,67.09099999999998
+1862,The University of Queensland,Australia,67.0,63.132999999999996
+1864,Utrecht University,Netherlands,66.6,64.486
+1865,University of North Carolina at Chapel Hill,United States of America,66.4,65.35999999999999
+1866,Boston University,United States of America,66.1,65.43000000000002
+1867,Delft University of Technology,Netherlands,65.9,68.08900000000003
+1868,University of Minnesota,United States of America,65.9,67.12199999999999
+1869,Leiden University,Netherlands,65.7,64.07499999999999
+1870,University of Southern California,United States of America,65.5,64.38599999999997
+1871,University of Bristol,United Kingdom,64.3,61.227999999999945
+1872,Durham University,United Kingdom,63.6,61.612999999999964
+1873,Erasmus University Rotterdam,Netherlands,63.5,58.00399999999999
+1874,Free University of Berlin,Germany,63.2,67.998
+1875,Monash University,Australia,62.5,61.007
+1876,University of Groningen,Netherlands,62.4,60.30299999999997
+1877,Pennsylvania State University,United States of America,62.3,62.44699999999996
+1878,University of Glasgow,United Kingdom,61.9,59.07199999999996
+1879,University of Helsinki,Finland,61.9,62.25399999999998
+1880,University of Tübingen,Germany,61.7,61.78699999999998
+1881,University of Pittsburgh,United States of America,61.5,61.387999999999984
+1882,University of Warwick,United Kingdom,61.3,59.063999999999986
+1883,Uppsala University,Sweden,61.2,61.55999999999998
+1884,University of Copenhagen,Denmark,61.0,58.125
+1885,University of New South Wales,Australia,61.0,57.34999999999997
+1886,University of Freiburg,Germany,60.7,60.043
+1888,University of St Andrews,United Kingdom,60.4,58.43300000000003
+1889,Vanderbilt University,United States of America,60.1,58.73000000000001
+1891,Maastricht University,Netherlands,59.9,56.89099999999999
+1892,Emory University,United States of America,59.7,57.47300000000001
+1894,Ohio State University,United States of America,59.7,58.135
+1895,University of Exeter,United Kingdom,59.5,55.90199999999998
+1897,Georgetown University,United States of America,58.8,59.11200000000001
+1898,McMaster University,Canada,58.8,57.40299999999996
+1899,University of Sheffield,United Kingdom,58.6,58.176999999999936
+1900,Queen Mary University of London,United Kingdom,58.5,55.395999999999994
+1901,University of Göttingen,Germany,58.0,58.12200000000003
+1902,Michigan State University,United States of America,58.0,58.03400000000004
+1903,University of Basel,Switzerland,57.9,53.55699999999995
+1904,École Polytechnique,France,57.9,54.89900000000002
+1905,Rice University,United States of America,57.9,54.315
+1906,Dartmouth College,United States of America,57.8,58.737000000000045
+1907,University of Zurich,Switzerland,57.8,54.52599999999998
+1908,Aarhus University,Denmark,57.7,55.69499999999998
+1909,"University of California, Irvine",United States of America,57.7,56.18599999999996
+1910,University of Mannheim,Germany,57.7,56.279
+1911,University of Notre Dame,United States of America,57.6,58.84300000000001
+1912,University of Western Australia,Australia,57.5,55.63700000000005
+1913,RWTH Aachen University,Germany,57.2,55.53
+1914,University of Southampton,United Kingdom,57.2,56.67799999999999
+1915,Scuola Normale Superiore di Pisa,Italy,57.1,59.071999999999996
+1916,University of Montreal,Canada,57.0,55.274999999999984
+1917,Pierre and Marie Curie University,France,57.0,56.367000000000004
+1919,Pohang University of Science and Technology,South Korea,56.9,57.68500000000003
+1920,"University of Maryland, College Park",United States of America,56.7,56.92899999999999
+1921,Ghent University,Belgium,56.6,56.762999999999955
+1922,University of Birmingham,United Kingdom,56.2,56.38400000000001
+1923,University of Bern,Switzerland,56.1,54.376
+1924,University of Cape Town,South Africa,56.1,53.494
+1926,University of Erlangen-Nuremberg,Germany,56.0,55.90400000000003
+1927,"Rutgers, the State University of New Jersey",United States of America,56.0,57.35699999999998
+1928,University of Münster,Germany,55.9,55.91599999999995
+1929,Radboud University Nijmegen,Netherlands,55.9,55.67600000000003
+1930,University of Colorado Boulder,United States of America,55.8,54.216
+1931,Tufts University,United States of America,55.8,55.49099999999999
+1932,"Royal Holloway, University of London",United Kingdom,55.7,53.599
+1933,Lancaster University,United Kingdom,55.6,55.12600000000001
+1934,University of Geneva,Switzerland,55.4,53.177000000000014
+1936,Case Western Reserve University,United States of America,55.3,55.942999999999984
+1937,University of Leeds,United Kingdom,55.3,55.553999999999995
+1939,Stockholm University,Sweden,54.8,55.602999999999994
+1940,University of Alberta,Canada,54.7,54.14500000000001
+1941,Chinese University of Hong Kong,Hong Kong,54.5,53.12100000000002
+1942,Karlsruhe Institute of Technology,Germany,54.5,53.626000000000005
+1943,University of Sussex,United Kingdom,54.4,52.82900000000001
+1944,University of Massachusetts,United States of America,54.3,52.645999999999965
+1945,University of Vienna,Austria,54.2,52.554000000000016
+1946,University of Nottingham,United Kingdom,54.1,52.87600000000001
+1947,"University of California, Santa Cruz",United States of America,53.9,52.20300000000001
+1949,Autonomous University of Barcelona,Spain,53.8,53.94199999999998
+1950,University of Virginia,United States of America,53.3,53.05999999999999
+1951,Korea Advanced Institute of Science and Technology (KAIST),South Korea,53.0,54.609000000000016
+1952,University of Adelaide,Australia,52.9,51.905999999999985
+1953,University of East Anglia,United Kingdom,52.9,52.475000000000016
+1954,University of Twente,Netherlands,52.9,52.15099999999998
+1955,Sungkyunkwan University (SKKU),South Korea,52.8,51.55600000000002
+1956,VU University Amsterdam,Netherlands,52.5,51.718999999999994
+1957,KTH Royal Institute of Technology,Sweden,52.4,50.776
+1958,University of Cologne,Germany,52.3,52.78300000000003
+1959,University of Liverpool,United Kingdom,52.2,49.693000000000005
+1960,TU Dresden,Germany,52.1,52.242999999999995
+1961,University of Rochester,United States of America,52.1,52.84699999999995
+1962,Trinity College Dublin,Republic of Ireland,52.0,51.97099999999997
+1963,Lomonosov Moscow State University,Russian Federation,51.9,55.65400000000002
+1964,University of Miami,United States of America,51.9,52.54399999999999
+1965,University of Arizona,United States of America,51.7,53.11999999999999
+1966,Pompeu Fabra University,Spain,51.2,51.019000000000005
+1967,University of Reading,United Kingdom,51.2,49.900000000000006
+1969,"University of California, Riverside",United States of America,51.1,49.89699999999999
+1970,University of Leicester,United Kingdom,51.1,49.74099999999999
+1971,National Taiwan University,Taiwan,51.1,51.605
+1972,Technical University of Denmark,Denmark,51.1,50.730999999999966
+1973,Université Catholique de Louvain,Belgium,51.1,50.55399999999999
+1974,University of Aberdeen,United Kingdom,51.0,49.94399999999999
+1975,University of Auckland,New Zealand,51.0,49.42500000000004
+1976,University of Barcelona,Spain,50.9,51.129999999999974
+1977,University of Konstanz,Germany,50.8,50.99099999999999
+1978,Eindhoven University of Technology,Netherlands,50.6,50.82699999999999
+1980,Hebrew University of Jerusalem,Israel,50.5,49.72899999999998
+1981,University of Waterloo,Canada,50.3,49.858999999999995
+1983,Scuola Superiore Sant’Anna,Italy,50.2,52.641999999999996
+1984,University of Bergen,Norway,50.1,49.235999999999976
+1985,Cardiff University,United Kingdom,50.1,49.68100000000001
+1986,University of Utah,United States of America,50.1,49.200999999999965
+1987,Brandeis University,United States of America,49.9,50.428000000000004
+1988,University of Dundee,United Kingdom,49.9,47.60499999999998
+1989,University of Würzburg,Germany,49.9,48.87699999999999
+1991,Arizona State University,United States of America,49.7,50.52399999999998
+1992,University of Antwerp,Belgium,49.6,50.77399999999998
+1993,Boston College,United States of America,49.6,49.588999999999984
+1994,Ulm University,Germany,49.5,46.620000000000026
+1995,University of Luxembourg,Luxembourg,49.4,47.358999999999995
+1996,Texas A&M University,United States of America,49.4,50.126000000000005
+1997,Charité - Universitätsmedizin Berlin,Germany,49.3,47.94100000000001
+1998,Newcastle University,United Kingdom,49.2,48.34299999999999
+1999,"St George’s, University of London",United Kingdom,49.2,49.336999999999996
+2000,University of Trento,Italy,49.1,47.67300000000003
+2001,Paris Diderot University – Paris 7,France,48.9,48.477000000000025
+2002,Queen’s University Belfast,United Kingdom,48.8,47.377999999999986
