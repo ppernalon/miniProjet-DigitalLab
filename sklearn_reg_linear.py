@@ -1,3 +1,4 @@
+from sklearn.linear_model import LinearRegression
 import sqlite3 as sql
 import numpy as np
 
@@ -7,6 +8,9 @@ cursor.execute('SELECT Year, Selling_Price FROM car_data')
 rows = np.array(cursor.fetchall()).T
 rows[0] = 2020 - rows[0]
 
-a_numpy, b_numpy = np.polyfit(rows[0], rows[1], 1)
+model = LinearRegression()
+reg = model.fit(X=rows[0].reshape((-1, 1)), y=rows[1])
+a_sklearn = reg.coef_
+b_sklearn = reg.intercept_
 
 conn.close()
