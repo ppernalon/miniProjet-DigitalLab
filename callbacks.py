@@ -92,8 +92,8 @@ def update_graph_mono(method):
 def update_graph_multi(method):
     children = []
     if method == "multivariable":
-        idx_annee = np.argwhere(car_data[0] == 2003)
-        idx = np.argwhere(car_data[3][idx_annee.T[0]] == 1).T[0]
+        idx_transmission = np.argwhere(car_data[3] == 1)
+        idx = np.argwhere(car_data[0][idx_transmission.T[0]] == 2003).T[0]
 
         a_multi, b_multi = get_param_sklearn_multivariate(car_data)
 
@@ -168,8 +168,8 @@ def update_graph_multi(method):
     ]
 )
 def update_fig1(annee, transmission):
-    idx_annee = np.argwhere(car_data[0] == annee)
-    idx = np.argwhere(car_data[3][idx_annee.T[0]] == transmission).T[0]
+    idx_transmission = np.argwhere(car_data[3] == transmission)
+    idx = np.argwhere(car_data[0][idx_transmission.T[0]] == annee).T[0]
 
     a_multi, b_multi = get_param_sklearn_multivariate(car_data)
 
