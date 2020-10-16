@@ -13,7 +13,7 @@ def layout_generator():
             html.Div(
                 id="radio-method",
                 children=[
-                    html.H5("choix des données sur l'axe x"),
+                    html.H5("Nombre de variables sélectionnées"),
                     dcc.RadioItems(
                         id="choix-method",
                         options=[

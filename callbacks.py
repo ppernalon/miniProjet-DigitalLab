@@ -68,8 +68,9 @@ def update_graph_mono(method):
         fig["layout"] = go.Layout(
             xaxis={'title': 'Year'},
             yaxis={'title': 'Selling Price'},
-            margin={'l': 40, 'b': 40, 't': 10, 'r': 10},
+            margin={'l': 40, 'b': 40, 't': 40, 'r': 10},
             legend={'x': 1.0, 'y': 0.3},
+            title="Prix de vente en fonction de l'année",
             hovermode='closest',
         )
 
@@ -91,20 +92,16 @@ def update_graph_mono(method):
 def update_graph_multi(method):
     children = []
     if method == "multivariable":
-        slider_years = html.Div([dcc.Slider(
-                            id='year_slider',
-                            min=2003,
-                            max=2018,
-                            step=1,
-                            value=2003,
-                        )])
-        children.append(slider_years)
-        idx = np.argwhere(car_data[0] == 2003)
+        idx_annee = np.argwhere(car_data[0] == 2003)
+        idx = np.argwhere(car_data[3][idx_annee.T[0]] == 1).T[0]
+
+        a_multi, b_multi = get_param_sklearn_multivariate(car_data)
+
         fig1 = {
             'data': [
                 go.Scatter(
-                    x=car_data[2][idx].T[0],
-                    y=car_data[1][idx].T[0],
+                    x=car_data[2][idx],
+                    y=car_data[1][idx],
                     mode='markers',
                     opacity=0.8,
                     marker={
@@ -112,6 +109,11 @@ def update_graph_multi(method):
                         'line': {'width': 0.5, 'color': 'white'}
                     },
                     name="données",
+                ),
+                go.Scatter(
+                    x=[np.min(car_data[2][idx]), np.max(car_data[2][idx])],
+                    y=[np.dot(a_multi, [2003, np.min(car_data[2][idx]), 1]) + b_multi, np.dot(a_multi, [2003, np.max(car_data[2][idx]), 1]) + b_multi],
+                    mode = "lines",
                 )
             ],
             "layout": go.Layout(
@@ -128,22 +130,54 @@ def update_graph_multi(method):
                 figure=fig1
             ),
         )
+        slider_years = html.Div([
+            html.H5("Quelle année ?"),
+            dcc.Slider(
+                id='year_slider',
+                min=2003,
+                max=2018,
+                step=1,
+                value=2003,
+                marks={i: '{}'.format(i) for i in range(2003, 2019)}
+            )]
+        )
+        children.append(slider_years)
+
+        transmission_radio = html.Div([
+            html.H5("Quelle type de transmission ?"),
+            dcc.RadioItems(
+                id="choix_transmission",
+                options=[
+                    {'label': 'manual', 'value': 1},
+                    {'label': 'automatic', 'value': 0},
+                ],
+                value=1,
+                labelStyle={'display': 'inline-block'}
+            ),
+        ])
+        children.append(transmission_radio)
 
     return children
+
 
 @app.callback(
     Output('fig1_Years_f', 'figure'),
     [
         Input('year_slider', 'value'),
+        Input('choix_transmission', 'value'),
     ]
 )
-def update_fig1(annee):
-    idx = np.argwhere(car_data[0] == annee)
+def update_fig1(annee, transmission):
+    idx_annee = np.argwhere(car_data[0] == annee)
+    idx = np.argwhere(car_data[3][idx_annee.T[0]] == transmission).T[0]
+
+    a_multi, b_multi = get_param_sklearn_multivariate(car_data)
+
     fig1 = {
         'data': [
             go.Scatter(
-                x=car_data[2][idx].T[0],
-                y=car_data[1][idx].T[0],
+                x=car_data[2][idx],
+                y=car_data[1][idx],
                 mode='markers',
                 opacity=0.8,
                 marker={
@@ -151,13 +185,20 @@ def update_fig1(annee):
                     'line': {'width': 0.5, 'color': 'white'}
                 },
                 name="données",
+            ),
+            go.Scatter(
+                x=[np.min(car_data[2][idx]), np.max(car_data[2][idx])],
+                y=[np.dot(a_multi, [annee, np.min(car_data[2][idx]), transmission]) + b_multi,
+                   np.dot(a_multi, [annee, np.max(car_data[2][idx]), transmission]) + b_multi],
+                mode="lines",
             )
         ],
         "layout": go.Layout(
             xaxis={'title': 'Kms Driven'},
             yaxis={'title': 'Selling Price'},
-            margin={'l': 40, 'b': 40, 't': 10, 'r': 10},
+            margin={'l': 40, 'b': 40, 't': 50, 'r': 10},
             legend={'x': 1.0, 'y': 0.3},
             hovermode='closest',
+            title="année " + str(annee),
         )}
     return fig1

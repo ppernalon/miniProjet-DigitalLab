@@ -7,7 +7,6 @@ conn = sql.connect('mini_projet.db')
 cursor = conn.cursor()
 cursor.execute('SELECT Year, Selling_Price FROM car_data')
 rows = np.array(cursor.fetchall()).T
-rows[0] = 2020 - rows[0]
 
 model = LinearRegression()
 reg = model.fit(X=rows[0].reshape((-1, 1)), y=rows[1])
@@ -44,5 +43,5 @@ def get_param_sklearn(data):
 
 def get_param_sklearn_multivariate(data):
     model = LinearRegression()
-    reg = model.fit(X=data[:3].T, y=data[3])
+    reg = model.fit(X=data[np.array([0, 2, 3])].T, y=data[1])
     return reg.coef_, reg.intercept_
