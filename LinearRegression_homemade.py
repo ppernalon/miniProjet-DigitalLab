@@ -1,6 +1,7 @@
 import numpy as np
 import sqlite3 as sql
 
+
 class LinearRegression_HM(object):
     def __init__(self):
         self.coef = None
@@ -9,7 +10,6 @@ class LinearRegression_HM(object):
     def fit(self, entries, targets):
         self.coef = np.dot(np.linalg.inv(np.dot(entries.T, entries)), np.dot(entries.T, targets))
         self.origine = np.mean(targets) - np.dot(self.coef, np.mean(entries, axis=0))
-
 
     def predict(self, entries):
         return np.dot(self.coef, entries) + self.origine
@@ -31,4 +31,10 @@ rows[3] = transmission_row
 rows = rows.astype(float)
 
 model = LinearRegression_HM()
-reg = model.fit(rows[:3].T, rows[3])
+model.fit(rows[:3].T, rows[3])
+
+
+def get_param_HM(data):
+    model = LinearRegression_HM()
+    model.fit(data[:3].T, data[3])
+    return model.coef, model.origine

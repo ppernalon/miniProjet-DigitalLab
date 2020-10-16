@@ -10,94 +10,57 @@ import dash_html_components as html
 
 from app import app
 
-timesData = pd.read_csv("data/timesData.csv")
-resultats = pd.read_csv('data/resultats.csv')
+import numpy as np
+from fetch_data import fetch_data
+from LinearRegression_homemade import get_param_HM
+from numpy_reg_linear import get_param_numpy
+from scipy_reg_linear import get_param_scipy
+from sklearn_reg_linear import get_param_sklearn, get_param_sklearn_multivariate
+
+car_data = fetch_data()
 
 @app.callback(
     Output('plot', 'figure'),
     [
-        Input("choix-axis-x", 'value'),
-        Input('url', 'pathname')
+        Input("choix-method", 'value'),
     ])
-def update_graph(axis_x, pathname):
-    if pathname in ['/2011', '/2012', '/2013', '/2014', '/2015']:
-        if not('apps' in pathname):
-            annee = 2011
-        else:
-            annee = int(pathname[-4:])
-        dataFrame = timesData[timesData.year == annee].iloc[:50, :]
-        fig = {'data': [go.Scatter(x=dataFrame[dataFrame['country'] == i][axis_x],
-                                   y=dataFrame[dataFrame['country'] == i]["total_score"],
-                                   text=dataFrame[dataFrame['country'] == i]['university_name'],
-                                   mode='markers',
-                                   opacity=0.8,
-                                   marker={
-                                       'size': 15,
-                                       'line': {'width': 0.5, 'color': 'white'}
-                                   },
-                                   name=i
-                                   ) for i in dataFrame.country.unique()],
-               'layout': go.Layout(
-                   xaxis={'title': axis_x},
-                   yaxis={'title': "Score"},
-                   margin={'l': 40, 'b': 40, 't': 50, 'r': 10},
-                   legend={'x': 0.0, 'y': -1.5},
-                   hovermode='closest',
-                   height= 1000,
-                   title="Score en fonction de " + axis_x + " pour l'année " + str(annee)
-               )
-               }
-    elif pathname == "/2016":
+def update_graph(method):
+    if method == "monovariable":
         fig = {
-            'data':
-                [
-                    go.Bar(
-                        x=resultats.university_name.iloc[:25],
-                        y=resultats.score.iloc[:25],
-                        name="Score"
-                    ),
-                    go.Bar(
-                        x=resultats.university_name.iloc[:25],
-                        y=resultats.prediction.iloc[:25],
-                        name="Prédiction du modèle"
-                    ),
-                ],
-            'layout': go.Layout(
-                title= "Comparaison des prédictions du modèle aux scores",
-                height= 500,
-            )
+            'data': [
+                go.Scatter(
+                    x=car_data[0],
+                    y=car_data[-2],
+                    mode='markers',
+                    opacity=0.8,
+                    marker={
+                        'size': 15,
+                        'line': {'width': 0.5, 'color': 'white'}
+                    },
+                    name="données",
+                )
+            ]
         }
-    else:
-        fig = {}
-    return fig
 
-@app.callback(
-    Output('radio-x', 'children'),
-    [
-        Input('url', 'pathname')
-    ])
-def update_graph_choice(pathname):
-    if pathname in ['/2011', '/2012', '/2013', '/2014', '/2015']:
-        children=\
-            [
-                    html.H5("choix des données sur l'axe x"),
-                    dcc.RadioItems(
-                        id="choix-axis-x",
-                        options=[
-                            {'label': u'teaching', 'value': 'teaching'},
-                            {'label': 'international', 'value': 'international'},
-                            {'label': 'research', 'value': 'research'},
-                            {'label': 'citations', 'value': 'citations'},
-                            {'label': 'income', 'value': 'income'},
-                            {'label': 'num_students', 'value': 'num_students'},
-                            {'label': 'student_staff_ratio', 'value': 'student_staff_ratio'},
-                            {'label': 'international_students', 'value': 'international_students'},
-                            {'label': 'female_male_ratio', 'value': 'female_male_ratio'},
-                        ],
-                        value='female_male_ratio',
-                        labelStyle={'display': 'inline-block'}
-                    ),
-                ]
-    else:
-        children = []
-    return children
+        def fig_append(a, b, data, method):
+            colors = {"numpy": 'rgba(0, 255, 0,1 )', 'scipy': 'rgba(255, 0, 0, 1)', 'sklearn': 'rgba(255, 255, 0, 1)',
+                      'HM': 'rgba(0, 255, 255, 1)'}
+            fig = go.Scatter(
+                x=[np.min(data[0]), np.max(data[0])],
+                y=[np.min(data[0]) * a + b, np.max(data[0]) * a + b],
+                mode="lines",
+                marker={'color': colors[method]},
+                name=method,
+            )
+            return fig
+
+        a_numpy, b_numpy = get_param_numpy(np.vstack((car_data[0], car_data[-2])))
+        fig['data'].append(fig_append(a_numpy, b_numpy, car_data, 'numpy'))
+
+        a_scipy, b_scipy = get_param_scipy(np.vstack((car_data[0], car_data[-2])))
+        fig['data'].append(fig_append(a_scipy, b_scipy, car_data, 'scipy'))
+
+        a_sklearn, b_sklearn = get_param_sklearn(np.vstack((car_data[0], car_data[-2])))
+        fig['data'].append(fig_append(a_sklearn, b_sklearn, car_data, 'sklearn'))
+        
+    return fig

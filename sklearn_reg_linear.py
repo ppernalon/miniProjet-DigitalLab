@@ -35,4 +35,14 @@ b = reg.intercept_
 
 predicted_prices = model.predict(rows[:3].T)
 
-print(mean_absolute_error(predicted_prices, rows[3]))
+
+def get_param_sklearn(data):
+    model = LinearRegression()
+    reg = model.fit(X=data[0].reshape((-1, 1)), y=data[1])
+    return reg.coef_, reg.intercept_
+
+
+def get_param_sklearn_multivariate(data):
+    model = LinearRegression()
+    reg = model.fit(X=data[:3].T, y=data[3])
+    return reg.coef_, reg.intercept_

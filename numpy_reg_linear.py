@@ -10,3 +10,7 @@ rows[0] = 2020 - rows[0]
 a_numpy, b_numpy = np.polyfit(rows[0], rows[1], 1)
 
 conn.close()
+
+
+def get_param_numpy(data):
+    return np.polyfit(data[0], data[1], 1)

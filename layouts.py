@@ -15,23 +15,16 @@ def layout_generator():
     layout = \
         html.Div([
             html.Div(
-                id="radio-x",
+                id="radio-method",
                 children=[
                     html.H5("choix des données sur l'axe x"),
                     dcc.RadioItems(
-                        id="choix-axis-x",
+                        id="choix-method",
                         options=[
-                            {'label': u'teaching', 'value': 'teaching'},
-                            {'label': 'international', 'value': 'international'},
-                            {'label': 'research', 'value': 'research'},
-                            {'label': 'citations', 'value': 'citations'},
-                            {'label': 'income', 'value': 'income'},
-                            {'label': 'num_students', 'value': 'num_students'},
-                            {'label': 'student_staff_ratio', 'value': 'student_staff_ratio'},
-                            {'label': 'international_students', 'value': 'international_students'},
-                            {'label': 'female_male_ratio', 'value': 'female_male_ratio'},
+                            {'label': 'monovariable', 'value': 'monovariable'},
+                            {'label': 'multivarible', 'value': 'multivarible'},
                         ],
-                        value='female_male_ratio',
+                        value='monovariable',
                         labelStyle={'display': 'inline-block'}
                     ),
                 ]
