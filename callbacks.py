@@ -19,18 +19,20 @@ from sklearn_reg_linear import get_param_sklearn, get_param_sklearn_multivariate
 
 car_data = fetch_data()
 
+
 @app.callback(
-    Output('plot', 'figure'),
+    Output('div_mono', 'children'),
     [
         Input("choix-method", 'value'),
     ])
-def update_graph(method):
+def update_graph_mono(method):
+    children = []
     if method == "monovariable":
         fig = {
             'data': [
                 go.Scatter(
                     x=car_data[0],
-                    y=car_data[-2],
+                    y=car_data[1],
                     mode='markers',
                     opacity=0.8,
                     marker={
@@ -45,22 +47,117 @@ def update_graph(method):
         def fig_append(a, b, data, method):
             colors = {"numpy": 'rgba(0, 255, 0,1 )', 'scipy': 'rgba(255, 0, 0, 1)', 'sklearn': 'rgba(255, 255, 0, 1)',
                       'HM': 'rgba(0, 255, 255, 1)'}
-            fig = go.Scatter(
+            fig_app = go.Scatter(
                 x=[np.min(data[0]), np.max(data[0])],
                 y=[np.min(data[0]) * a + b, np.max(data[0]) * a + b],
                 mode="lines",
                 marker={'color': colors[method]},
                 name=method,
             )
-            return fig
+            return fig_app
 
-        a_numpy, b_numpy = get_param_numpy(np.vstack((car_data[0], car_data[-2])))
+        a_numpy, b_numpy = get_param_numpy(np.vstack((car_data[0], car_data[1])))
         fig['data'].append(fig_append(a_numpy, b_numpy, car_data, 'numpy'))
 
-        a_scipy, b_scipy = get_param_scipy(np.vstack((car_data[0], car_data[-2])))
+        a_scipy, b_scipy = get_param_scipy(np.vstack((car_data[0], car_data[1])))
         fig['data'].append(fig_append(a_scipy, b_scipy, car_data, 'scipy'))
 
-        a_sklearn, b_sklearn = get_param_sklearn(np.vstack((car_data[0], car_data[-2])))
+        a_sklearn, b_sklearn = get_param_sklearn(np.vstack((car_data[0], car_data[1])))
         fig['data'].append(fig_append(a_sklearn, b_sklearn, car_data, 'sklearn'))
-        
-    return fig
+
+        fig["layout"] = go.Layout(
+            xaxis={'title': 'Year'},
+            yaxis={'title': 'Selling Price'},
+            margin={'l': 40, 'b': 40, 't': 10, 'r': 10},
+            legend={'x': 1.0, 'y': 0.3},
+            hovermode='closest',
+        )
+
+        children.append(
+            dcc.Graph(
+                figure=fig
+            )
+        )
+
+    return children
+
+
+@app.callback(
+    Output('div_multi', 'children'),
+    [
+        Input('choix-method', 'value'),
+    ]
+)
+def update_graph_multi(method):
+    children = []
+    if method == "multivariable":
+        slider_years = html.Div([dcc.Slider(
+                            id='year_slider',
+                            min=2003,
+                            max=2018,
+                            step=1,
+                            value=2003,
+                        )])
+        children.append(slider_years)
+        idx = np.argwhere(car_data[0] == 2003)
+        fig1 = {
+            'data': [
+                go.Scatter(
+                    x=car_data[2][idx].T[0],
+                    y=car_data[1][idx].T[0],
+                    mode='markers',
+                    opacity=0.8,
+                    marker={
+                        'size': 15,
+                        'line': {'width': 0.5, 'color': 'white'}
+                    },
+                    name="données",
+                )
+            ],
+            "layout": go.Layout(
+                xaxis={'title': 'Kms Driven'},
+                yaxis={'title': 'Selling Price'},
+                margin={'l': 40, 'b': 40, 't': 50, 'r': 50},
+                legend={'x': 1.0, 'y': 0.3},
+                hovermode='closest',
+                title="année 2003",
+            )}
+        children.append(
+            dcc.Graph(
+                id='fig1_Years_f',
+                figure=fig1
+            ),
+        )
+
+    return children
+
+@app.callback(
+    Output('fig1_Years_f', 'figure'),
+    [
+        Input('year_slider', 'value'),
+    ]
+)
+def update_fig1(annee):
+    idx = np.argwhere(car_data[0] == annee)
+    fig1 = {
+        'data': [
+            go.Scatter(
+                x=car_data[2][idx].T[0],
+                y=car_data[1][idx].T[0],
+                mode='markers',
+                opacity=0.8,
+                marker={
+                    'size': 15,
+                    'line': {'width': 0.5, 'color': 'white'}
+                },
+                name="données",
+            )
+        ],
+        "layout": go.Layout(
+            xaxis={'title': 'Kms Driven'},
+            yaxis={'title': 'Selling Price'},
+            margin={'l': 40, 'b': 40, 't': 10, 'r': 10},
+            legend={'x': 1.0, 'y': 0.3},
+            hovermode='closest',
+        )}
+    return fig1

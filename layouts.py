@@ -7,10 +7,6 @@ import pandas as pd
 import plotly.graph_objs as go
 
 
-timesData = pd.read_csv("data/timesData.csv")
-resultats = pd.read_csv('data/resultats.csv')
-
-
 def layout_generator():
     layout = \
         html.Div([
@@ -22,7 +18,7 @@ def layout_generator():
                         id="choix-method",
                         options=[
                             {'label': 'monovariable', 'value': 'monovariable'},
-                            {'label': 'multivarible', 'value': 'multivarible'},
+                            {'label': 'multivariable', 'value': 'multivariable'},
                         ],
                         value='monovariable',
                         labelStyle={'display': 'inline-block'}
@@ -30,12 +26,15 @@ def layout_generator():
                 ]
             ),
 
-            dcc.Graph(
-                id='plot',
-                figure={}
+            html.Div(
+                id="div_mono",
+                children=[],
             ),
 
-            html.Div(id='id'),
+            html.Div(
+                id='div_multi',
+                children=[],
+            )
         ])
     return layout
 
